@@ -1,0 +1,46 @@
+Add 1 True
+Add 2 False
+Add 3 False
+PrintBST
+0:  1 
+
+Add 4 False
+Add 5 False
+Add 6 False
+Add 10 False
+PrintBST
+0:  1 
+
+Add 8 False
+Add 7 False
+Add 9 False
+PrintBST
+0:  1 
+
+Remove 11 False
+Remove 10 False
+Remove 9 False
+Remove 6 False
+PrintBST
+0:  1 
+
+Remove 8 False
+Remove 7 False
+PrintBST
+0:  1 
+
+Remove 5 False
+Remove 4 False
+Remove 3 False
+Remove 2 False
+PrintBST
+0:  1 
+
+Remove 1 False
+PrintBST
+0:  1 
+
+Clear
+PrintBST
+0:  1 
+

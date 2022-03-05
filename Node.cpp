@@ -1,17 +1,17 @@
 #include "NodeInterface.h"
 #include "Node.h"
 
-Node::Node(T data = NULL) {
+Node::Node(int data) {
+  this->data = data;
   left = NULL;
   right = NULL;
-  this->data = data; 
 }
 int Node::getData() const {
-  
+  return data;
 }
-NodeInterface * Node::getLeftChild() const {
-  
+NodeInterface* Node::getLeftChild() const {
+  return left;
 }
-NodeInterface * Node::getRightChild() const {
-  
+NodeInterface* Node::getRightChild() const {
+  return right;
 }

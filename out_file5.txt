@@ -1,0 +1,108 @@
+Add 10 True
+Add 5 False
+Add 15 False
+Add 3 False
+Add 13 False
+Add 1 False
+Add 11 False
+Add 2 False
+Add 12 False
+Add 7 False
+Add 17 False
+Add 9 False
+Add 19 False
+Add 8 False
+Add 18 False
+Add 0 False
+Add 20 False
+Add 4 False
+Add 14 False
+Add 6 False
+Add 16 False
+PrintBST
+0:  10 
+
+Remove 10 False
+PrintBST
+0:  10 
+
+Remove 9 False
+PrintBST
+0:  10 
+
+Remove 8 False
+PrintBST
+0:  10 
+
+Remove 7 False
+PrintBST
+0:  10 
+
+Remove 6 False
+PrintBST
+0:  10 
+
+Remove 5 False
+PrintBST
+0:  10 
+
+Remove 4 False
+PrintBST
+0:  10 
+
+Remove 3 False
+PrintBST
+0:  10 
+
+Remove 2 False
+PrintBST
+0:  10 
+
+Remove 1 False
+PrintBST
+0:  10 
+
+Remove 0 False
+PrintBST
+0:  10 
+
+Remove 15 False
+PrintBST
+0:  10 
+
+Remove 14 False
+PrintBST
+0:  10 
+
+Remove 13 False
+PrintBST
+0:  10 
+
+Remove 12 False
+PrintBST
+0:  10 
+
+Remove 11 False
+PrintBST
+0:  10 
+
+Remove 17 False
+PrintBST
+0:  10 
+
+Remove 16 False
+PrintBST
+0:  10 
+
+Remove 19 False
+PrintBST
+0:  10 
+
+Remove 18 False
+PrintBST
+0:  10 
+
+Remove 20 False
+PrintBST
+0:  10 
+

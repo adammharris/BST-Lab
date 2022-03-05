@@ -1,16 +1,16 @@
 #pragma once
 #include <iostream>
+#include "NodeInterface.h"
 
-template<typename T>
-class Node {
+class Node : public NodeInterface {
 private:
-  T data;
-  Node* left;
-  Node* right;
+  int data;
+  NodeInterface* left;
+  NodeInterface* right;
 
 public:
-  Node();
+  Node(int data);
 	int getData() const;
-	NodeInterface * getLeftChild() const;
-	NodeInterface * getRightChild() const;
+	NodeInterface* getLeftChild() const;
+	NodeInterface* getRightChild() const;
 };

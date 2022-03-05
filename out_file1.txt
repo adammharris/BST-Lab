@@ -1,0 +1,20 @@
+Add 1 True
+Add 2 False
+Add 3 False
+Add 1 True
+PrintBST
+0:  1 
+
+Add 4 False
+Add 5 False
+Add 6 False
+Add 10 False
+PrintBST
+0:  1 
+
+Add 8 False
+Add 7 False
+Add 9 False
+PrintBST
+0:  1 
+
