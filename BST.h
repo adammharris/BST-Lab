@@ -18,6 +18,7 @@ public:
   Node* find(const int& data);
   Node* findParent(const Node* child);
   void removeRoot(Node* old_root);
+  bool removeNode(int data, Node* local_root);
 
   BST();
 	NodeInterface* getRootNode() const;

@@ -62,25 +62,63 @@ bool BST::add(int data) {
   return true;
 }
 void BST::removeRoot(Node* old_root) {
+  if (old_root == NULL)
+    return;
   bool hasRightChild = (old_root->getRight() != NULL);
   bool hasLeftChild = (old_root->getLeft() != NULL);
   if (hasRightChild != hasLeftChild) {
     Node* onlyChild = (hasRightChild) ? old_root->getRight() : old_root->getLeft();
     Node* parent = findParent(old_root);
-    if (parent->getLeft() == old_root) {
-      parent->setLeft(onlyChild);
-    } else {
-      parent->setRight(onlyChild);
+    if (parent != NULL) {
+      if (parent->getLeft() == old_root) {
+        parent->setLeft(onlyChild);
+      } else {
+        parent->setRight(onlyChild);
+      }
     }
+    if (old_root == root)
+      root = onlyChild;
     delete old_root;
     return;
   }
+  if (!hasRightChild && !hasLeftChild && old_root == root) {
+    delete root;
+    root = NULL;
+    local_node = NULL;
+    return;
+  }
   // After here, know that both children are present
-  
+  /*60 is the old_root. 
+Now find the rightmost local root that does not have a right child and call it local_root (57)
+replace the data in node 60 with 57.  
+Call erase(BTNode<int>*55, 57) This will go down the branch for 55 until it finds node 57 and will erase it by replacing it with 56.*/
+  cout << "Hello " << old_root->getData();
+  int hack = old_root->getData();
+  hack--;
+  local_node = old_root;
+  Node* replacement = find(hack);
+  cout << ' ' << replacement->getData() << endl;
+  if (replacement->getData() == old_root->getData()) {
+    cout << "SAME!!";
+    replacement = old_root->getRight();
+    return;
+  }
+  // recursive stuff here
+  old_root->setData(replacement->getData());
+  removeNode(replacement->getData(), old_root);
 }
 bool BST::remove(int data) {
-  if (root == NULL)
+  return removeNode(data, root);
+}
+bool BST::removeNode(int data, Node* local_root) {
+  if (local_root == NULL)
     return false;
+  if (local_root == root && root->getData() == data) {
+    delete root;
+    root = NULL;
+    local_node = NULL;
+    return true;
+  }
   Node* child = find(data);
   if (child == NULL || child->getData() != data)
     return false;
@@ -91,8 +129,8 @@ bool BST::remove(int data) {
   // Remove if leaf
   Node* parent = findParent(child);
   if (parent == NULL) {
-    delete root;
-    root = NULL;
+    delete local_root;
+    local_root = NULL;
     local_node = NULL;
     return true;
   }
@@ -105,5 +143,8 @@ bool BST::remove(int data) {
   return true;
 }
 void BST::clear() {
-  
+  if (root == NULL)
+    return;
+  removeRoot(root);
+  clear();
 }
