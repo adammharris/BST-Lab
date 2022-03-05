@@ -22,6 +22,9 @@ Node* Node::getLeft() const {
 Node* Node::getRight() const {
   return right;
 }
+Node*& Node::recurseRight() {
+  return right;
+}
 
 int Node::getData() const {
   return data;

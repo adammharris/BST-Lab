@@ -88,24 +88,18 @@ void BST::removeRoot(Node* old_root) {
     return;
   }
   // After here, know that both children are present
-  /*60 is the old_root. 
-Now find the rightmost local root that does not have a right child and call it local_root (57)
-replace the data in node 60 with 57.  
-Call erase(BTNode<int>*55, 57) This will go down the branch for 55 until it finds node 57 and will erase it by replacing it with 56.*/
-  cout << "Hello " << old_root->getData();
-  int hack = old_root->getData();
-  hack--;
-  local_node = old_root;
-  Node* replacement = find(hack);
-  cout << ' ' << replacement->getData() << endl;
-  if (replacement->getData() == old_root->getData()) {
-    cout << "SAME!!";
-    replacement = old_root->getRight();
-    return;
-  }
+  Node* replacement = old_root->getLeft();
+  replaceParent(old_root, replacement);
   // recursive stuff here
-  old_root->setData(replacement->getData());
-  removeNode(replacement->getData(), old_root);
+  
+}
+void BST::replaceParent(Node*& old_root,Node*& local_root) {
+  if (local_root->getRight() != NULL) {
+    replaceParent(old_root, local_root->recurseRight());
+  } else {
+    old_root->setData(local_node->getData());
+    removeNode(local_root->getData(), old_root);
+  }
 }
 bool BST::remove(int data) {
   return removeNode(data, root);
@@ -145,6 +139,7 @@ bool BST::removeNode(int data, Node* local_root) {
 void BST::clear() {
   if (root == NULL)
     return;
-  removeRoot(root);
+  //cout << root->getData() << endl;
+  remove(root->getData());
   clear();
 }

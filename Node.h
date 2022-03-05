@@ -18,6 +18,7 @@ public:
   void setRight(Node* newRight);
   Node* getLeft() const;
   Node* getRight() const;
+  Node*& recurseRight();
 
 	int getData() const;
 	NodeInterface* getLeftChild() const;
