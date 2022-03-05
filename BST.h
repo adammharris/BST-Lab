@@ -8,9 +8,14 @@ using namespace std;
 class BST : public BSTInterface {
 protected:
   Node* root;
-  Node* local_node;
+  Node* local_node; // used for `find`
 public:
-  bool find(NodeInterface*& local_root, int data);
+	/*
+	* `find` helps find data via recursion
+  * @return pointer of node next to or equal to data
+  * @return NULL if BST is empty
+	*/
+  Node* find(const int& data);
 
   BST();
 	NodeInterface* getRootNode() const;

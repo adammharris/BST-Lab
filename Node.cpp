@@ -6,6 +6,20 @@ Node::Node(int data) {
   left = NULL;
   right = NULL;
 }
+
+void Node::setLeft(Node* newLeft) {
+  left = newLeft;
+}
+void Node::setRight(Node* newRight) {
+  right = newRight;
+}
+Node* Node::getLeft() const {
+  return left;
+}
+Node* Node::getRight() const {
+  return right;
+}
+
 int Node::getData() const {
   return data;
 }

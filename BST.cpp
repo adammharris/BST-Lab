@@ -2,19 +2,24 @@
 #include "BSTInterface.h"
 #include "Node.h"
 #include "NodeInterface.h"
+#include <iostream>
 
-bool BST::find(NodeInterface*& local_root, int data) {
-  if (local_root == NULL) {
-    return false;
+Node* BST::find(const int& data) {
+  Node* nextNode;
+  if (data > local_node->getData()) {
+    nextNode = local_node->getRight();
+  } else if (data < local_node->getData()) {
+    nextNode = local_node->getLeft();
+  } else {
+    nextNode = NULL;
   }
-  if (local_root->getData() < data) {
-    local_root = local_root->getLeftChild();
-  } else if (local_root->getData() > data) {
-    local_root = local_root->getRightChild();
-  } else if (local_root->getData() == data) {
-    return true;
+  if (nextNode == NULL) {
+    Node* toReturn = local_node;
+    local_node = root; // reset local_node 
+    return toReturn;
   }
-  return find(local_root, data);
+  local_node = nextNode;
+  return find(data);
 }
 
 BST::BST() {
@@ -30,20 +35,30 @@ bool BST::add(int data) {
     local_node = root;
     return true;
   }
-  NodeInterface* local_root = root;
-  bool isPresent = find(local_root, data);
-  if (!isPresent) {
-    local_root = new Node(data);
+  Node* closestNode = find(data);
+  if (closestNode == NULL || closestNode->getData() == data)
+    return false;
+  Node* newNode = new Node(data);
+  if (data > closestNode->getData()) {
+    closestNode->setRight(newNode);
+  } else {
+    closestNode->setLeft(newNode);
   }
-  return isPresent;
+  return true;
 }
 bool BST::remove(int data) {
   if (root == NULL) {
     return false;
   }
-  NodeInterface* local_root = root;
-  bool isPresent = find(local_root, data);
-  return false;
+  Node* closestNode = find(data);
+  cout << data;
+  if (closestNode == NULL || closestNode->getData() != data) {
+    cout << " not found" << endl;
+    return false;
+  }
+  cout << " found!!" << endl;
+  //delete closestNode;
+  return true;
 }
 void BST::clear() {
   
