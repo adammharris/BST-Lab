@@ -13,6 +13,7 @@ private:
 public:
   Node(int data);
 
+  void setData(int data);
   void setLeft(Node* newLeft);
   void setRight(Node* newRight);
   Node* getLeft() const;

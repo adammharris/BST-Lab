@@ -16,6 +16,8 @@ public:
   * @return NULL if BST is empty
 	*/
   Node* find(const int& data);
+  Node* findParent(const Node* child);
+  void removeRoot(Node* old_root);
 
   BST();
 	NodeInterface* getRootNode() const;

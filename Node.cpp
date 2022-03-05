@@ -7,6 +7,9 @@ Node::Node(int data) {
   right = NULL;
 }
 
+void Node::setData(int data) {
+  this->data = data;
+}
 void Node::setLeft(Node* newLeft) {
   left = newLeft;
 }
