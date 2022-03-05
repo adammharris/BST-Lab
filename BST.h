@@ -17,7 +17,7 @@ public:
 	*/
   Node* find(const int& data);
   Node* findParent(const Node* child);
-  void removeRoot(Node* old_root);
+  void removeRoot(Node*& old_root);
   bool removeNode(int data, Node* local_root);
   void replaceParent(Node*& old, Node*& new_node);
 
