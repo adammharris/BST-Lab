@@ -21,22 +21,6 @@ Node* BST::find(const int& data) {
   local_node = nextNode;
   return find(data);
 }
-Node* BST::findParent(const Node* child) {
-  if (child == root)
-    return NULL;
-  if (local_node->getRight() == child || local_node->getLeft() == child) {
-    Node* toReturn = local_node;
-    local_node = root; // reset local_node 
-    //cout << "Child: " << child->getData() << " Parent: " << toReturn->getData() << endl;
-    return toReturn;
-  }
-  if (local_node->getData() < child->getData()) {
-    local_node = local_node->getRight();
-  } else {
-    local_node = local_node->getLeft();
-  }
-  return findParent(child);
-}
 
 BST::BST() {
   root = NULL;
@@ -68,15 +52,7 @@ bool BST::add(int data) {
   return true;
 }
 bool BST::remove(int data) {
-  if (root->getRight() == NULL)
-    cout << "No right node for root" << endl;
-  if (root->getLeft() == NULL)
-    cout << "No left node for root" << endl;
-  //return removeNode(data, root);
   Node* representsRoot = root;
-  if (data == root->getData()) {
-    return removeFinalNode();
-  }
   return erase(representsRoot, data);
 }
 bool BST::removeFinalNode() {
@@ -97,6 +73,27 @@ void BST::clear() {
 }
 
 bool BST::erase(Node*& local_root,const int& item) {
+  if (root->getData() == item) {
+    // Three cases:
+    // root has no children
+    // root has one child
+    // root has both children
+    if (root->getLeft() == NULL && root->getRight() == NULL) {
+      return removeFinalNode(); // no children
+    }
+    if ((root->getLeft() == NULL) != (root->getRight() == NULL)) {
+      // one child (should make child root)
+      Node* onlyChild = (root->getLeft()!=NULL) ? root->getLeft() : root->getRight();
+      delete root;
+      root = onlyChild;
+      return true;
+    }
+    if (!(root->getLeft() == NULL) && !(root->getRight() == NULL)) {
+      // both children (should make closest node root)
+      replace_parent(root, root->recurseLeft());
+      return true;
+    }
+  }
   if (local_root == NULL) {
     return false;
   } else {
