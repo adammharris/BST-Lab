@@ -1,2 +1,2 @@
 language = "bash"
-run = "make && ./bst && rm bst"
+run = "make && valgrind --leak-check=full ./bst && rm bst"

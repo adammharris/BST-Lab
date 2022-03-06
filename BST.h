@@ -21,6 +21,7 @@ public:
 void replace_parent(Node*& old_root, Node*& local_root);
 
   BST();
+  ~BST();
 	NodeInterface* getRootNode() const;
 	bool add(int data);
 	bool remove(int data);
