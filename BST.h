@@ -19,7 +19,11 @@ public:
   Node* findParent(const Node* child);
   void removeRoot(Node*& old_root);
   bool removeNode(int data, Node* local_root);
-  void replaceParent(Node*& old, Node*& new_node);
+  bool removeFinalNode();
+bool erase(Node*& local_root,const int& item);
+  void replaceParentRight(Node*& old, Node*& new_node);
+void replaceParentLeft(Node*& old, Node*& new_node);
+void replace_parent(Node*& old_root, Node*& local_root);
 
   BST();
 	NodeInterface* getRootNode() const;
